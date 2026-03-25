@@ -23,7 +23,7 @@ export default function Home() {
   useEffect(() => {
     const loadGraph = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/graph');
+        const res = await axios.get('https://forward-tjcc.onrender.com/graph');
         setNodes(res.data.nodes || []);
         setEdges(res.data.edges || []);
       } catch (err) {
@@ -41,7 +41,9 @@ export default function Home() {
     const type = node.id.split('_')[0];
 
     try {
-      const res = await axios.get(`http://localhost:5000/trace/${id}`);
+      const res = await axios.get(
+        `https://forward-tjcc.onrender.com/trace/${id}`,
+      );
 
       setNodeDetails({
         ...res.data,
@@ -82,7 +84,7 @@ export default function Home() {
     try {
       setLoading(true);
 
-      const res = await axios.post('http://localhost:5000/chat', {
+      const res = await axios.post('https://forward-tjcc.onrender.com/chat', {
         query,
       });
 
